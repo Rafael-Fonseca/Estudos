@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dados - Introdução</title>
+</head>
+<body>
+    <header>
+        <ul></ul>
+    </header>
+
+    <h1>Introdução:</h1>
+    Neste estágio do livro são apresentados conceitos básicos de banco de dados que nos permitem
+entender melhor as ideias descritas no decorrer do livro.<br>
+
+    <ul>
+        <b><li>Redundância de dados:</li></b>
+        Como o nome sugere, é a situação onde a mesma informação se encontra repitida em um SI.<br>
+        Existem dois tipos de redundância de dados, a controlada e a não controlada.
+
+        <b><li>Redundãcia de dados controlada:</li></b>
+        É a redundância de dados em que o próprio SI garante que as informações repetidas tenham o mesmo valor.<br>
+        Por exemplo: Considere que um sistema guarda informações sobre a quantidade de um determinado produto,
+        em duas partes distintas do sistema. E ocorre a venda de uma unidade deste produto, então o software assegura
+        que o valor seja atualizado nas duas partes do sistema.
+
+        <b><li>Redundãcia de dados não controlada:</li></b>
+        A responsabilidade de atualizar os dados em todos os pontos de repetição é do usuário do sistema.<br>
+        Este tipo de redundância deve ser evitado, uma vez que sua implementação gera problemas ao usuário como
+        redigitação e incosistência de dados.
+
+        <b><li>Banco de Dados(BD):</li></b>
+        É um conjunto de dados que objetiva atender seus usuários.
+
+        <b><li>Sitema de Gerência de Banco de Dados(SGBD):</li></b>
+        Software que permite criar, ler e atualizar dados em um BD.<br>
+        O autor não traz a funcionalidade deletar dados em um BD, mas na minha convicção pessoal, eu levo.<br>
+        Se eu fosse você leitor, ficaria com a definição do autor rs.
+
+        <b><li>Modelo de dados:</li></b>
+        É descrição formal da estrutura de um BD. Pode ser realizado de duas formas, conceitual ou lógico.
+
+        <b><li>Modelo Conceitual:</li></b>
+        É um modelo abstrato que descreve um banco de dados sem levar em conta nenhum SGBD em particular.<br>
+        A técnica mais usada para montar modelos conceituais é a abordagem Entidade Relacionamento(ER), através
+        de um Diagrama Entidade Relacionamento(DER).
+
+        <b><li>Modelo Lógico:</li></b>
+        É uma descrição de um banco de dados no nível visto pelo usuário do SGBD.
+        Ou seja, este modelo precisa levar em consideração qual SGBD será utilizado.
+    </ul>
+</body>
+</html>
