@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitHub Actions</title>
+</head>
+<body>
+<a href="../start.html">Início</a><br>
+<a href="./modulo2.html">Módulo 2</a>
+<p>
+    O GitHub Actions nos ajuda a automatizar algumas etapas do nosso ciclo de vida do desenvolvimento de software.<br>
+Ele é dirigido a eventos, ou seja, é possível pedir que o Actions realize algumas tarefas após um evento específico
+ser identificado.<br>
+Para uma lista completa dos eventos disponíveis e sua sintaxe,
+<a href="https://docs.github.com/en/actions/reference/events-that-trigger-workflows">acesse.</a><br>
+No entanto a sintaxe básica estará exposta na lista a baixo.
+</p>
+
+<p>
+    Entendendo um arquivo yml básico do actions. As aspas triplas('''Livre''') serão o identificador de quando o
+    código ali dentro é escolha do programador<br><br>
+    name: ____'''Opcional, é o nome do fluxo de trabalho que vai aparecer na aba Actions do GitHub.'''<br>
+    on: ______['''Especificar o/s evento/s que engatilha/m o fluxo de trabalho.''']<br>
+    jobs: ____{Aqui não vai código, é um agrupador de todos os jobs que serão realizados}<br>
+    ____'''Nome do Job''':<br>
+    ____ ___runs-on: ____'''Escolha entre as
+    <a href="https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on">opções
+    </a>{Serve para configurar o sistema operacional da máquina virtual que vai rodar seu fluxo de trabalho.}<br>
+    ____ ___steps: {Agrupador de actions ou linhas de comando shell que formam o Job.}<br>
+    ____ ___ ___-uses: ____'''Por exemplo: actions/checkout@v2'''
+    {Informa ao Job que ele deve procurar uma action já existente na comunidade}<br>
+    ____ ___ ___-run: ____'''Por exemplo: python -m pip install --upgrade pip'''
+    {informa ao Job que ele deve executar uma linha de comando no shell.}<br>
+
+
+</p>
+
+<ul>
+    <a href="https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html">Sintaxe YAML:</a>
+    <br><br><b><li>Eventos que engatilham fluxos de trabalho:</li></b>
+    <ol>
+        <br><b><li>Eventos únicos:</li></b>
+        on: push<br><br>
+        <b><li>Eventos em listas:</li></b>
+        on:[push, pull_request]<br><br>
+        <b><li>Eventos múltiplos e branches:<br>(ignore os underlines)</li></b>
+        on:<br>
+        ____push:<br>
+        ________branches:<br>
+        ____________- main<br>
+        ____pull_request:<br>
+        ________branches:<br>
+        ____________- main<br><br>
+    </ol>
+
+    <br><br><b><li>:</li></b>
+
+</ul>
+
+Por hora, é tudo que precisamos.
+</body>
+</html>
