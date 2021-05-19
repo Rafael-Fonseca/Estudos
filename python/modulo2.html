@@ -28,9 +28,23 @@
     No entanto, eu vou ter que fazer um estudo sobre esta ferramenta através de sua documentação, já linkada acima,<br>
     O estudo está disponível <a href="./github_actions.html">aqui.</a>
 
+    <br><br><b><li>PyUp:</li></b>
+    Serviço de automatização que ajuda a manter as bibliotecas(dependências) do projeto atualizadas.<br>
+    Necessário ter conta no PyUp, vinculada ao seu repositório Git.<br>
+    Dar permissão para que o PyUp leia e escreva no seu repositório.<br>
+    Na raiz do projeto crie e configure o arquivo .pyup.yml
+
     <br><br><b><li>PyPi(pip):</li></b>
     Empacotador de bibliotecas que possibilita reaproveitar código de forma correta e compartilhada com a comunidade
-    python.
+    python.<br>
+    Para realizar a distribuição, é necessário:<br><br>
+    Criar e configurar o arquivo setup.py na raiz do projeto.<br>
+    Executar o comando git tag {nome da tag, normalmente coincide com o número da versão}
+    Este comando cria uma tag.<br>
+    Executar o comando git push --tags, este comando envia as tags criadas e vincula ao último comit.<br>
+    Executar python setup.py sdist, este comando cria uma distribuição .tar.gz<br>
+    Instale se necessário a biblioteca twine<br>
+    Execute o comando twine upload dist/* {Este comando envia suas releases para o pip.
 
     <br><br><b><li>Pytest:</li></b>
     Biblioteca que possibilita criar testes.
