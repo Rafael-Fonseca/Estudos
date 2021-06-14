@@ -21,14 +21,42 @@
 
   <p>
     A alocação da memória pode ocorrer de duas formas:<br>
-
   <ol>
-      <b><li>(Para <a href="./glossario.html">memória estática</a>) -- Pilha:</li></b>
+      <li><b>(Para <a href="./glossario.html">memória estática</a>) -- Pilha:</b></li>
+      Armazena a memória necessária apenas em uma determinada função ou chamada de método.<br>
+      Quando uma função é chamada, ela é adicionada à pilha de chamadas do programa.<br>
+      Quaisquer atribuições de memória local - como inicializações de variáveis - dentro destas funções
+      são armazenadas temporariamente na pilha de chamadas de função,<br>
+      e são excluídas assim que a função retorna. Então a pilha de chamadas segue para a próxima tarefa.
 
-      <b><li>(Para <a href="./glossario.html">memória estática</a>) --
-          <a href="./glossario.html">heap</a>:</li></b>
+      <li><b>(Para <a href="./glossario.html">memória estática</a>) --
+          <a href="./glossario.html">heap</a>:</b></li>
+      A alocação de heap armazena a memória usada no programa, no escopo global.
+      Essas variáveis são necessárias fora do método específico ou são compartilhadas em várias funções globalmente.
 
   </ol>
   </p>
+
+  <p>
+      Práticas recomendadas em python para alocação de memória ou complexidade de espaço.
+
+    <ol>
+      <li><b>Evitar fatiamento de listas:</b></li>
+      Tentar usar parâmetros de função ou variáveis separadas para rastrear índices ao invéz de fatiar ou alterar
+      uma lista. O fatiamento gera uma nova lista.
+
+      <li><b>Preferir "for each" ao invés de "for in range":</b></li>
+      Se o índice não for necessário e seu programa funcionar sem ele, não o aloque!
+
+      <li><b>Concatenação de strings da forma correta:</b></li>
+      Como a String é imutável o python tem que alocar nova variável para cada concatenação.<br>
+      Utilize .join(iterable_object) ou .format ou %!
+
+      <li><b>Use Iteradores e Geradores:</b></li>
+      <li><b>Faça uso de bibliotecas quando possível:</b></li>
+    </ol>
+  </p>
+
+
 </body>
 </html>
