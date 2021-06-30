@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-06</title>
+</head>
+<body>
+
+<h2>Aula do dia: 02/06/2021</h2>
+
+<br><h3>Objetivos</h3>
+Definir o que é VHDL e como ele é usado.<br>
+Reconhecer alguns componentes básicos de programação de VHDL:<br>
+estrutura básica (entity e architecture), tipos de dados, bibliotecas e operadores
+<br>
+
+<h4>Atividade 01</h4>
+Pesquise sobre outra linguagem de descrição de hardware, chamada Verilog, compare com VHDL:
+
+<br><h5>Resposta:</h5>
+Verilog é uma linguagem fracamente tipada, é menos deterministica que VHDL, possui sintaxe semelhante a linguagem C.
+<br>Verilog é menos verbosa que VHDL. Mas no tocante à descrição de hardware essas diferenças não importam.
+<br>
+
+<h4>Atividade 02</h4>
+a) Quais são as duas principais estruturas de projeto do VHDL?<br>
+b) Defina as diferenças e funções destas duas estruturas.<br>
+c) O exemplo apresentado anteriormente mostrava a descrição VHDL de uma porta AND.<br>
+Agora escreva o código para a porta OR de duas entradas, sabendo que em VHDL a porta or é definida como OR.
+
+<br><h5>Respostas:</h5>
+<b>a)</b><br>
+Entidade e Arquitetura.
+
+<br><b>b)</b><br>
+Uma arquiterura pertence a uma entidade.<br>
+Uma entidade só possui uma arquitetura.<br>
+Na entidade declaramos as interfaces do sistema com o mundo real:<br>
+Estas interfaces podem ser dos tipos, entrada, saída, buffer e inout.<br>
+Saídas não podem ser lidas, Buffer é uma saída que pode ser lida. E inout pode ser in ou out dependendo da impedância.
+<br>
+Nas arquiteturas é onde informamos a lógica do sistema. Uma arquitetura pode fazer uso de outras entidades.
+
+<br><b>c)</b><br>
+Ignore os simbolos de "_" <br>
+entity circuito is<br>
+____port( a, b, c: in bit;<br>
+_________s_______: out bit<br>
+____);<br>
+end entity;<br>
+<br>
+architecture estrutura of circuito is<br>
+____begin<br>
+________s <= a or b;<br>
+____end architecture;<br>
+<br>
+
+<h4>Atividade 03</h4>
+a) Qual o objetivo de utilizarmos as bibliotecas?<br>
+b) Qual a biblioteca necessária quando utilizamos o tipo de dado std_logic e como declaramos ela no código VHDL?<br>
+c) Que caractere é utilizado para inserir comentários em uma linha de código VHDL?
+
+<br><h5>Respostas:</h5>
+<b>a)</b><br>
+Utilizar tipos de dados pré definidos, reaproveitar código.
+
+<br><b>b)</b><br>
+library IEEE;<br>
+use IEEE.std_logic_1164.all;
+
+<br><b>c)</b><br>
+2 hífens como no exemplo a seguir, exemplo: -- Comentário
+<br>
+
+<h4>Atividade 04</h4>
+a) Quais são as 4 classes de tipos de dados?<br>
+b) Quais são os tipos escalares?<br>
+c) Escreva um vetor binário (de 0s e 1s) que contenha 8 elementos?<br>
+
+<br><h5>Resposta:</h5>
+<b>a)</b><br>
+Escalares, Compostos, Acesso e Arquivo.
+<br><b>b)</b><br>
+Inteiros, Reais, Enumerados e Físicos.
+<br><b>c)</b><br>
+TYPE vetor_binario IS ARRAY (0 to 7) OF BIT;
+<br>
+
+<h4>Atividade 05</h4>
+Cite dois tipos de operadores lógicos e dois relacionais.
+
+<br><h5>Resposta:</h5>
+Lógicos:<br>
+I- and<br>
+II- or
+<br>Relacionais:<br>
+I- = (igual)<br>
+II- /= (diferente)
+<br>
+
+<h4>Atividade 06</h4>
+Atividade pratica.
+<br><h5>Resposta:</h5>
+A comparação não faz sentido, na atividade 4 eu posso montar o vetor binário com os valores que eu quiser.
+<br>
+
+<a href="20210531.html">Anterior</a><br>
+<a href="20210607.html">Próxima</a><br>
+
+</body>
+</html>
