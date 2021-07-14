@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>I.A.</title>
+</head>
+<body>
+<h1>Onde se baseia este estudo?</h1>
+    <p>Luger, George F.<br>Inteligência Artificial / George F. Luger; tradução Daniel Vieira;<br>
+    revisão técnica Andrea labrudi Tavares. - 6. ed. - São Paulo:<br>Pearson Education do Brasil, 2013<br>
+    <br>Título original: Artificial intelligence<br>
+    Bibliografia.<br>
+    ISBN 978-85-8143-550-3</p><br><br>
+
+<h3>Como o estudo será exposto?</h3>
+    <p>Nestas páginas serão expostas apenas uma personalização das perguntas constantes no livro e as respostas<br>
+    por mim elaboradas.</p>
+
+<br><h4>Capítulo 2</h4>
+<p>Neste capítulo foi mostrado a teoria do Cálculo de Predicados, que é uma linguagem de representação para <br>
+a resolução de problemas por I.A.</p>
+<br>
+
+<ol>
+    <h4><li>Provar identidades usando tabelas verdades:</li></h4>
+    <b>~(~P) = P</b><br>
+    | P | ~P | ~~P | === | P |<br>
+    | V |_ F _|__ V _|__ V __| V |<br>
+    | F |_ V _|__ F _|__ V __| F |<br>
+
+    <br><br><b>(P or Q) = (Se ~P então Q)</b><br>
+    | P | Q | OU | === | -> | ~P | Q |<br>
+    | V | V |_ V _|__ V __|_ V |_ F _| V |<br>
+    | V | F |_ V _|__ V __|_ V |_ F _| F |<br>
+    | F | V |_ V _|__ V __|_ V |_ V _| V |<br>
+    | F | F |_ F _|__ V __|_ F |_ V _| F |<br>
+
+    <br><br><b>(Se P então Q) = (Se ~Q então ~P) << lei Contrapositiva</b><br>
+    | P -> Q | === | ~Q -> ~P | ~P | ~Q | P | Q |<br>
+    |___ V ___|__ V __|___ V ____|_ F _|_ F _| V | V |<br>
+    |___ F ___|__ V __|___ F ____|_ F _|_ V _| V | F |<br>
+    |___ V ___|__ V __|___ V ____|_ V _|_ F _| F | V |<br>
+    |___ V ___|__ V __|___ V ____|_ V _|_ V _| F | F |<br>
+
+    <br><br><b>~(P or Q) = (~P e ~Q) << 1° lei de Morgan</b><br>
+    | P ou Q | ~ | === | ^ | ~P | ~Q |<br>
+    |___ V ___| F |__ V __| F |_ F |_ F _|<br>
+    |___ V ___| F |__ V __| F |_ F |_ V _|<br>
+    |___ V ___| F |__ V __| F |_ V |_ F _|<br>
+    |___ F ___| V |__ V __| V |_ V |_ V _|<br>
+
+    <br><br><b>~(P e Q) = (~P ou ~Q) << 2° lei de Morgan</b><br>
+    | P ^ Q | ~ | === | ou | ~P | ~Q |<br>
+    |__ V ___| F |__ V __|_ F |_ F |_ F |<br>
+    |__ F ___| V |__ V __|_ V |_ F |_ V |<br>
+    |__ F ___| V |__ V __|_ V |_ V |_ F |<br>
+    |__ F ___| V |__ V __|_ V |_ V |_ V |<br>
+
+    <br><br><b>(P e Q) = (Q e P) /// (P ou Q) = (Q ou P) << lei comutativa</b><br>
+    | P ^ Q | === | ^ | Q | P | ||| | P ou Q | === | ou | Q | P |<br>
+    |__ V ___|__ V __| V | V | V | ||| |___ V __|__ V __|_ V | V | V |<br>
+    |__ F ___|__ V __| F | F | V | ||| |___ V __|__ V __|_ V | F | V |<br>
+    |__ F ___|__ V __| F | V | F | ||| |___ V __|__ V __|_ V | V | F |<br>
+    |__ F ___|__ V __| F | F | F | ||| |___ F __|__ V __|_ F | F | F |<br>
+
+    <br><br><b>((P e Q) e R) = (P e (Q e R)) << lei associativa</b><br>
+    | P | Q | R | P e Q | ^R | === | ^P | Q ^ R |<br>
+    | V | V | V |__ V __|_ V _|__ V __|_ V |__ V ___|<br>
+    | V | V | F |__ V __|_ F _|__ V __|_ F |__ F ___|<br>
+    | V | F | V |__ F __|_ F _|__ V __|_ F |__ F ___|<br>
+    | V | F | F |__ F __|_ F _|__ V __|_ F |__ F ___|<br>
+    | F | V | V |__ F __|_ F _|__ V __|_ F |__ V ___|<br>
+    | F | V | F |__ F __|_ F _|__ V __|_ F |__ F ___|<br>
+    | F | F | V |__ F __|_ F _|__ V __|_ F |__ F ___|<br>
+    | F | F | F |__ F __|_ F _|__ V __|_ F |__ F ___|<br>
+
+    <br><br><b>((P ou Q) ou R) = (P ou (Q ou R)) << lei associativa</b><br>
+    | P ou Q | ou R | === | ou P | Q ou R |<br>
+    |___ V __|__ V _|__ V __|__ V _|___ V __|<br>
+    |___ V __|__ V _|__ V __|__ V _|___ V __|<br>
+    |___ V __|__ V _|__ V __|__ V _|___ V __|<br>
+    |___ V __|__ V _|__ V __|__ V _|___ F __|<br>
+    |___ V __|__ V _|__ V __|__ V _|___ V __|<br>
+    |___ V __|__ V _|__ V __|__ V _|___ V __|<br>
+    |___ F __|__ V _|__ V __|__ V _|___ V __|<br>
+    |___ F __|__ F _|__ V __|__ F _|___ F __|<br>
+
+    <br><br><b>P ou (Q e R) = (P ou Q) e (P ou R) << lei distributiva</b><br>
+    | Q e R | ou P | === | ^ | P ou Q | P ou R |<br>
+    |___ V __|_ V _|__ V __| V |___ V ___|___ V __|<br>
+    |___ F __|_ V _|__ V __| V |___ V ___|___ V __|<br>
+    |___ F __|_ V _|__ V __| V |___ V ___|___ V __|<br>
+    |___ F __|_ V _|__ V __| V |___ V ___|___ V __|<br>
+    |___ V __|_ V _|__ V __| V |___ V ___|___ V __|<br>
+    |___ F __|_ F _|__ V __| F |___ V ___|___ F __|<br>
+    |___ F __|_ F _|__ V __| F |___ F ___|___ V __|<br>
+    |___ F __|_ F _|__ V __| F |___ F ___|___ F __|<br>
+
+    <br><br><b>P ^ (Q ou R) = (P ^ Q) ou (P ^ R) << lei distributiva</b><br>
+    | Q ou R | ^P | === | ou | P ^ Q | P ^ R |<br>
+    |___ V ___|_ V |__ V __|_ V |___ V _|___ V __|<br>
+    |___ V ___|_ V |__ V __|_ V |___ V _|___ F __|<br>
+    |___ V ___|_ V |__ V __|_ V |___ F _|___ V __|<br>
+    |___ F ___|_ F |__ V __|_ F |___ F _|___ F __|<br>
+    |___ V ___|_ F |__ V __|_ F |___ F _|___ F __|<br>
+    |___ V ___|_ F |__ V __|_ F |___ F _|___ F __|<br>
+    |___ V ___|_ F |__ V __|_ F |___ F _|___ F __|<br>
+    |___ F ___|_ F |__ V __|_ F |___ F _|___ F __|<br><br>
+
+
+    <h5><li>Criar uma expressão de Cálculo Proposicional usando apenas E, OU, ~ que seja equivalente ao XOR,
+    provar equivalencia com tabela verdade:</li></h5>
+
+    Tabela do Xor: ------------------- Outra Tabela<br>
+    | P | Q | Xor | ------------------- | ~P | ~Q | ~P ^ Q | P ^ ~Q | (~P^Q) OU (P^~Q) |<br>
+    | V | V |_ F _| ------------------- |_ F _|_ F _|___ F ___|___ F ___|__________ F __________|<br>
+    | V | F |_ V _| ------------------- |_ F _|_ V _|___ F ___|___ V ___|__________ V __________|<br>
+    | F | V |_ V _| ------------------- |_ V _|_ F _|___ V ___|___ F ___|__________ V __________|<br>
+    | F | F |_ F _| ------------------- |_ V _|_ V _|___ F ___|___ F ___|__________ F __________|<br><br>
+
+    <h5><li>Provar equivalência entre "se e somente se" e "se (P ou Q) então (P e Q)" por tabela verdade e
+    por série de substituições, usando as identidades.</li></h5>
+
+    <b>Por Tabela verdade</b><br>
+    | P | Q | P => Q | ------------------- | P OU Q | P ^ Q | -> |<br>
+    | V | V |___ V ___| ------------------- |___ V ___|___ V __|_ V |<br>
+    | V | F |___ F ___| ------------------- |___ V ___|___ F __|_ F |<br>
+    | F | V |___ F ___| ------------------- |___ V ___|___ F __|_ F |<br>
+    | F | F |___ V ___| ------------------- |___ F ___|___ F __|_ V |<br>
+    <br><b>Por série de substituições:</b><br>
+
+    <br><h5><li>Prove: "se [(se P então Q) E (se Q então R)] então [(se P então R)]</li></h5>
+
+    <br><h5><li>Provar que Modus Ponens, e Modus tollens são consistentes:</li></h5>
+
+    <br><h5><li>Ou unifique ou explique o motivo da impossibilidade:</li></h5>
+    <b>a) p(X,Y) e p(a,z)</b>
+    <br><br><b>b) p(X,X) e p(a,b)</b>
+    <br><br><b>c) avo(X,Y) e avo(ana, mae(ana))</b>
+    <br><br><b>d) avo(X,mae(x)) e avo(paulo, jorge)</b>
+    <br><br><b>e) q(X) e ~q(a)</b>
+
+    <br><h5><li>Realise a composição SS' onde S={a/X, Y/Z} e S'={X/W, b/Y}</li></h5>
+
+    <br><h5><li>Prove a propriedade associativa da composição</li></h5>
+
+    <br><h5><li>Crie um exemplo que demonstre que a composição não é cumulativa</li></h5>
+
+    <br><h5><li>Implemente o algoritmo unificar na linguagem que preferir</li></h5>
+
+    <br><h5><li>Conceda duas interpretações alternativas para a descrição do mundo de blocos</li></h5>
+
+    <br><h5><li>ganhos(30.000, estável) ; quantia_poupada(15.000) ; dependentes(4) realize as unificações de modo a
+    determinar seu investimento sugerido</li></h5>
+
+    <br><h5><li>Escreva um conjunto de predicados lógicos para realizar diagnóstico simples de automóvel</li></h5>
+
+    <br><h5><li>A história que gerou este exercício é de N. Wirth(1976), Algorithms + data structures = programs.</li></h5>
+    Eu me casei com V, que tem uma filha adulta (F), meu pai (P) se casou com (F). Logo P se tornou meu genro e<br>
+    minha enteada minha mãe. V teve um filho F1 que se tornou cunhado de P e meu tio. F teve F2.<br><br>
+    Usando o cálculo de predicados, crie um conjunto de expressões que represente a situação da história citada.<br>
+    Acrescente expressões definindo o relacionamentos básicos de família, como a definição de sogro e use o modus ponens
+    <br>nesse sistema para provar a conclusão de que "Eu sou o meu próprio avô".
+
+</ol>
+
+
+</body>
+</html>
