@@ -19,6 +19,10 @@
 <br><h4>Capítulo 2</h4>
 <p>Neste capítulo foi mostrado a teoria do Cálculo de Predicados, que é uma linguagem de representação para <br>
 a resolução de problemas por I.A.</p>
+<p>Sintaxe cálculo de predicados:<br>
+    Inicia com maiúscula: Variável<br>
+
+</p>
 <br>
 
 <ol>
@@ -42,14 +46,14 @@ a resolução de problemas por I.A.</p>
     |___ V ___|__ V __|___ V ____|_ V _|_ F _| F | V |<br>
     |___ V ___|__ V __|___ V ____|_ V _|_ V _| F | F |<br>
 
-    <br><br><b>~(P or Q) = (~P e ~Q) << 1° lei de Morgan</b><br>
+    <br><br><b>~(P or Q) = (~P e ~Q) << 1° lei de De Morgan</b><br>
     | P ou Q | ~ | === | ^ | ~P | ~Q |<br>
     |___ V ___| F |__ V __| F |_ F |_ F _|<br>
     |___ V ___| F |__ V __| F |_ F |_ V _|<br>
     |___ V ___| F |__ V __| F |_ V |_ F _|<br>
     |___ F ___| V |__ V __| V |_ V |_ V _|<br>
 
-    <br><br><b>~(P e Q) = (~P ou ~Q) << 2° lei de Morgan</b><br>
+    <br><br><b>~(P e Q) = (~P ou ~Q) << 2° lei de De Morgan</b><br>
     | P ^ Q | ~ | === | ou | ~P | ~Q |<br>
     |__ V ___| F |__ V __|_ F |_ F |_ F |<br>
     |__ F ___| V |__ V __|_ V |_ F |_ V |<br>
@@ -127,13 +131,100 @@ a resolução de problemas por I.A.</p>
     | V | F |___ F ___| ------------------- |___ V ___|___ F __|_ F |<br>
     | F | V |___ F ___| ------------------- |___ V ___|___ F __|_ F |<br>
     | F | F |___ V ___| ------------------- |___ F ___|___ F __|_ V |<br>
-    <br><b>Por série de substituições:</b><br>
 
-    <br><h5><li>Prove: "se [(se P então Q) E (se Q então R)] então [(se P então R)]</li></h5>
+    <br><b>Por série de substituições:</b><br><br>
+
+    P => Q<br>
+
+    <br>Por definição é igual a: (P -> Q) ^ (Q -> P)<br>
+
+    <br>Como: ~P -> Q = P OU Q<br>
+    <br>Podemos provar via Tabela verdade que: P -> Q = ~P OU Q<br>
+    <br>Subtituindo obtemos:<br>
+
+    <br>(~P OU Q) ^ (~Q OU P)<br>
+
+    <br>Se imaginarmos (~P OU Q) = ~P e (~Q OU P) = ~Q temos uma sentença do tipo ~P ^ ~Q <br>
+    <br><b>Por De Morgan: ~P ^ ~Q = ~(P OU Q)</b><br>
+    <br>Como na nossa suposição temos os valores de ~P e de ~Q<br>
+    Temos que descobrir uma expresão que nos dê o valor de P e de Q.<br>
+    Como ~P = (~P OU Q) <br> <b>P = ~(~P OU Q) = (P ^ ~Q)</b>  << Foi utilizado a lei de De Morgan, e pode ser provada com a
+    tabela verdade.<br>
+    Analogamente temos ~Q = (~Q OU P) <br> <b>Q = ~(~Q OU P) = (Q ^ ~P)</b><br><br>
+
+    Logo, substituindo os valores de P e Q encontrados, no resultado do De Morgan em negrito, temos:<br>
+    ~[(P ^ ~Q) OU (Q ^ ~P)]
+
+    <br><br>Supondo P = (P ^ ~Q) e supondo Q = (Q ^ ~P)<br>
+    Ficamos com ~[P OU Q] e podemos substituir a parte interna aos colchetes por ~P -> Q
+    <br>Logo, ~[~P -> Q]<br>
+
+    <br>Retornando os valores de P e Q temos:<br>
+
+    ~[<b>~(P ^ ~Q)</b> -> (Q ^ ~P)]
+    <br><br>
+
+    Podemos utilizar De Morgan no termo em negrito, para obter:<br>
+    ~[(~P OU Q) -> (Q ^ ~P)]
+    <br><br>
+
+    Utilizamos agora a lei da comutatividade no último termo para obter:<br>
+    ~[(~P OU Q) -> (~P ^ Q)]
+    <br><br>
+
+    Uma vez que não há uma lei para a negação da implicação, vamos conferir pela tabela verdade se a expressão encontrada
+    e a expressão a ser obtida são equivalentes.<br><br>
+
+    ~[(~P OU Q) -> (~P ^ Q)] << São equivalentes? >> (P OU Q) -> P ^ Q<br><br>
+    | P | Q | ~P | ~Q | ~P ou Q | ~P ^ Q | -> | ~ |Equivalente?| -> | P ou Q | P ^ Q |<br>
+    | V | V |_ F _|_ F _|____ V ___|___ F ___|_ F | V |_____ S _____|_ V _|___ V __|__ V __|<br>
+    | V | F |_ F _|_ V _|____ F ___|___ F ___|_ V | F |_____ S _____|_ F _|___ V __|__ F __|<br>
+    | F | V |_ V _|_ F _|____ V ___|___ V ___|_ V | F |_____ S _____|_ F _|___ V __|__ F __|<br>
+    | F | F |_ V _|_ V _|____ V ___|___ F ___|_ F | V |_____ S _____|_ V _|___ F __|__ F __|<br>
+
+    <br>A tabela verdade confirma que a manipulação realizada não sofreu erros, não cheguei na fórmula pedida, mas<br>
+    o resultado está muito próximo, me dou por satisfeito.
+
+
+    <br><h5><li>Prove que: "[(P -> Q) ^ (Q -> R)] -> [(P -> R)]</li></h5>
+
+    | P | Q | R | P -> Q | Q -> R | ^ | -> | P -> R |<br>
+    | V | V | V |___ V ___|___ V __| V |_ V |___ V __|<br>
+    | V | V | F |___ V ___|___ F __| F |_ V |___ F __|<br>
+    | V | F | V |___ F ___|___ V __| F |_ V |___ V __|<br>
+    | V | F | F |___ F ___|___ V __| F |_ V |___ F __|<br>
+    | F | V | V |___ V ___|___ V __| V |_ V |___ V __|<br>
+    | F | V | F |___ V ___|___ F __| F |_ V |___ V __|<br>
+    | F | F | V |___ V ___|___ V __| V |_ V |___ V __|<br>
+    | F | F | F |___ V ___|___ V __| V |_ V |___ V __|<br><br>
+
+    Este é um raciocínio Tautológico.<br>
 
     <br><h5><li>Provar que Modus Ponens, e Modus tollens são consistentes:</li></h5>
+    <b>Modus Ponens:</b><br>
+    O Modus Ponens diz que, se P -> Q = V e P = V podemos inferir logicamente que Q é V, para provar vejamos a tabela
+    verdade<br>onde estes casos são atendidos.<br>
+    | P | Q | P -> Q |<br>
+    <b>| V | V |___ V __|</b><br>
+    | V | F |___ F __|<br>
+    | F | V |___ V __|<br>
+    | F | F |___ V __|<br>
+    <br>De fato, como destacado em negrito existe apenas um caso onde o Modus Ponens é atendido e ele é consistente.
 
-    <br><h5><li>Ou unifique ou explique o motivo da impossibilidade:</li></h5>
+    <br><br><b>Modus Tollens:</b><br>
+    De maneira similar o Modus Tollens diz que, se P -> Q = V e Q = F podemos inferir logicamente que P é F, para provar vejamos a tabela
+    verdade<br>onde estes casos são atendidos.<br>
+    | P | Q | P -> Q |<br>
+    | V | V |___ V __|<br>
+    | V | F |___ F __|<br>
+    | F | V |___ V __|<br>
+    <b>| F | F |___ V __|</b><br>
+    <br>De fato, como destacado em negrito existe apenas um caso onde o Modus Tollens é atendido e ele é consistente.
+
+    <br><br><h5><li>Ou unifique ou explique o motivo da impossibilidade:</li></h5>
+    1- No processo de unificação, não se pode substituir constantes, mas constantes podem substituir variáveis.<br>
+    2- Duas constantes distintas, não podem substituir uma mesma variável.<br>
+    3- Uma variável não pode ser substituída por um termo que contenha esta variável<br>
     <b>a) p(X,Y) e p(a,z)</b>
     <br><br><b>b) p(X,X) e p(a,b)</b>
     <br><br><b>c) avo(X,Y) e avo(ana, mae(ana))</b>
